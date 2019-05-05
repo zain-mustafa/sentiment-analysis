@@ -1,0 +1,24 @@
+<dx-vector-map 
+    id="vector-map" 
+    [bounds]="[-180, 85, 180, -60]" 
+    (onTooltipShown)="tooltipShown($event)">
+    <dxo-tooltip 
+        [enabled]="true" 
+        [customizeTooltip]="customizeTooltip"></dxo-tooltip>
+    <dxo-export [enabled]="true"></dxo-export>
+    <dxo-title text="Sentiment Analysis">
+        <dxo-subtitle text="Using Geographical Segmentation"></dxo-subtitle>
+    </dxo-title>
+    <dxi-layer 
+        [customize]="customizeLayers"  
+        [dataSource]="worldMap"
+        [palette]="['#fd2f24', '#ffd901', '#64dd17']"
+        [colorGroups]="[-100, -90, -80, -70, -60, -50, -40, -30, -25, -20, -15, -10, -5, -1, 0, 1, 5, 10, 15, 20, 25, 30, 40, 50, 60, 70, 80, 90, 100]"
+        colorGroupingField="total"
+        name="areas">
+        <dxo-label [enabled]="true" dataField="name"></dxo-label>
+    </dxi-layer>
+    <dxi-legend [customizeText]="customizeText">
+        <dxo-source layer="areas" grouping="color"></dxo-source>
+    </dxi-legend>
+</dx-vector-map>

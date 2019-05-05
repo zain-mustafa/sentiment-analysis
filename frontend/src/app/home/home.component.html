@@ -1,0 +1,23 @@
+<div class="s01">
+  <div class="container" *ngIf="showLoader">
+      <img class="custom-spinner-template" style="border-radius: 200px;" src="https://www.lyxoretf.com/resources/images/prehomeGif.gif.pagespeed.ce.8pXHTHDf-v.gif">
+      <div class="centered">Loading....</div>
+  </div>
+  <form *ngIf="!showLoader">
+    <fieldset>
+      <legend>Know what people think</legend>
+    </fieldset>
+    <div class="inner-form">
+      <div class="input-field first-wrap">
+        <input [(ngModel)]="search_keyword" required #name="ngModel" name="search_keyword" id="search" autocomplete="off" type="text" placeholder="What are you looking for?" />
+      </div>
+      <div [hidden]="name.valid || name.pristine"
+          class="alert alert-danger">
+        Name is required
+      </div>
+      <div class="input-field third-wrap">
+        <button (click)="search_query()" class="btn-search" type="button">Search</button>
+      </div>
+    </div>
+  </form>
+</div>
